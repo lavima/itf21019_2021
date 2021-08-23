@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--item name="materialButtonStyle">@style/Widget.PlayingWithBottomNavigation.DifferentButton</item-->
+    </style>
+
+    <style name="Widget.PlayingWithBottomNavigation.DifferentButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+
+    <style name="HugeText" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AccentText" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+</resources>

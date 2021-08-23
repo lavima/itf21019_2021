@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PlayingWithIntents</string>
+    <string name="start_otheractivity_explicit">Start OtherActivity (Explicit)</string>
+    <string name="hello_android">Hello Android!</string>
+    <string name="name">Name</string>
+    <string name="openwebpage">OpenWebpage</string>
+    <string name="openmaps">OpenMaps</string>
+    <string name="selected_picture">selected picture</string>
+    <string name="getpicture">GetPicture</string>
+</resources>

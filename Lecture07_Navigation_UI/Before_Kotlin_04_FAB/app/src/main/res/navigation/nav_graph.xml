@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home_dest">
+
+    <fragment
+        android:id="@+id/collection_dest"
+        android:name="no.hiof.larseknu.playingwithbottomnavigation.collectionscreen.CollectionFragment"
+        android:label="Collection"
+        tools:layout="@layout/fragment_collection" />
+    <fragment
+        android:id="@+id/home_dest"
+        android:name="no.hiof.larseknu.playingwithbottomnavigation.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/search_dest"
+        android:name="no.hiof.larseknu.playingwithbottomnavigation.UpcomingFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+</navigation>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PlayingWithBottomNavigation</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="count">Count</string>
+    <string name="_0">0</string>
+    <string name="plus1">+1</string>
+
+    <string name="increment_text">+$d</string>
+</resources>

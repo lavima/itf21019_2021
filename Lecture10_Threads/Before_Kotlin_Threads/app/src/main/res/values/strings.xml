@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PlayingWithThreads</string>
+    <string name="doasyncwork">DoAsyncWork</string>
+    <string name="easypermissions">EasyPermissions</string>
+</resources>

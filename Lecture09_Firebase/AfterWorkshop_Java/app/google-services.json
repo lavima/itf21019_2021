@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "569007750487",
+    "firebase_url": "https://itf21019.firebaseio.com",
+    "project_id": "itf21019",
+    "storage_bucket": "itf21019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569007750487:android:bc0f5accdf5e4ba20c9212",
+        "android_client_info": {
+          "package_name": "com.lavima.afterworkshop_java"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569007750487-p3i0l3alh8j3p9h48hup762o3rmifmga.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lavima.afterworkshop_java",
+            "certificate_hash": "09ecd385bf8ae15a06ae647478f54b8d5a947160"
+          }
+        },
+        {
+          "client_id": "569007750487-ts9jd2ftgmjofemkhuoqiesgnhau4lfu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWXwsZu2sexKehhiYQNeDrDdcQSgjV35g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569007750487-ts9jd2ftgmjofemkhuoqiesgnhau4lfu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

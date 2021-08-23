@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movieSelectionFragment">
+
+    <fragment
+        android:id="@+id/movieSelectionFragment"
+        android:name="no.hiof.larseknu.playingwithviewmodel.screen.selection.MovieSelectionFragment"
+        android:label="fragment_movie_selection"
+        tools:layout="@layout/fragment_movie_selection" />
+    <fragment
+        android:id="@+id/movieSummaryFragment"
+        android:name="no.hiof.larseknu.playingwithviewmodel.screen.summary.MovieSummaryFragment"
+        android:label="fragment_movie_summary"
+        tools:layout="@layout/fragment_movie_summary" />
+</navigation>
