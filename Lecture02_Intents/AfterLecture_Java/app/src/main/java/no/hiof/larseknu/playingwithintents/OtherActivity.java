@@ -1,5 +1,8 @@
 package no.hiof.larseknu.playingwithintents;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,6 +23,7 @@ public class OtherActivity extends AppCompatActivity {
 
     // 5.4: Create a field variable for the ImageView
     private ImageView imageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +48,14 @@ public class OtherActivity extends AppCompatActivity {
     public void getPicture(View view) {
         //Toast.makeText(this, "Getting picture", Toast.LENGTH_SHORT).show();
         // 5.7: Create Intent with ACTION_GET_CONTENT
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        //Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         // 5.8: Set the type of the intent to image/*
-        intent.setType("image/*");
+        //intent.setType("image/*");
         // 5.10: Call the setActivityResult with the intent and the int constant
-        startActivityForResult(intent, REQUEST_IMAGE_GET);
+        //startActivityForResult(intent, REQUEST_IMAGE_GET);
+
+        // Updated approach
+        launcher.launch("image/*");
     }
 
     // 5.11: Override onActivityResult to handle result of the image request
@@ -70,4 +77,22 @@ public class OtherActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+    // ActivityResultLauncher provides a safer way to fetch results from another
+    // activity.
+    // See https://developer.android.com/training/basics/intents/result#java for details
+    ActivityResultLauncher<String> launcher =
+            registerForActivityResult(new ActivityResultContracts.GetContent(),
+                    new ActivityResultCallback<Uri>() {
+                        @Override
+                        public void onActivityResult(Uri uri) {
+                            try {
+                                Bitmap picture = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                                imageView.setImageBitmap(picture);
+                            }
+                            catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
 }

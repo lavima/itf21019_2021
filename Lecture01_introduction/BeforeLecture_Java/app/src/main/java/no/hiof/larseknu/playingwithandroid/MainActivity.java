@@ -3,6 +3,7 @@ package no.hiof.larseknu.playingwithandroid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
     private String LOG_TAG = "PlayingWithAndroid";
@@ -12,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    
     //TODO 1: Override the onStart() ActivityLifecycle event and add logging (Ctrl + O - Override shortcut)
 
     //TODO 2: Override the onResume() ActivityLifecycle event and add logging
