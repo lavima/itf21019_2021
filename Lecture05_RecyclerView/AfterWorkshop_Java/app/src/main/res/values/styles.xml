@@ -1,5 +1,7 @@
 <resources>
     <!-- Base application theme. -->
+    <!-- Theme.AppCompat.Light.NoActionBar er en stil som sørger for
+         at activities med theme er fullskjerm -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>

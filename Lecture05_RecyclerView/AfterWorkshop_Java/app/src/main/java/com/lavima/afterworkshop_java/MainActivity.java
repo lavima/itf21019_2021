@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set a custom toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Testing 1 2 3");
         setSupportActionBar(toolbar);
@@ -27,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Lager en enkel toast
+
+                Toast.makeText(getApplicationContext(), "Dette er en enkel toast", Toast.LENGTH_LONG).show();
+
+                // Lager en toast med custom view (deprecated API 30, bruk Snackbar i stedet)
+
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.toast_layout, (ViewGroup)findViewById(R.id.toast_container));
 
