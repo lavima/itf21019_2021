@@ -37,13 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
 
-        // Connect with navigation controller for automatic navigation
+        // Connect with navigation controller for automatic navigation and UI updates
         NavigationUI.setupWithNavController(bottomNavigation, controller);
         // Simple explicit navigation
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 NavigationUI.onNavDestinationSelected(menuItem, controller);
+                // Manual, but poor, effort. Not sufficient / No longer supported?
                 //controller.navigate(menuItem.getItemId());
                 //menuItem.setChecked(true);
                 return true;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         // This will make sure that we don't get a back/up-arrow on the top level destinations
         AppBarConfiguration configuration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.searchFragment, R.id.collectionFragment)
+                // This makes the app bar be able to open the navigation drawer
                 .setOpenableLayout(drawerLayout).build();
         NavigationUI.setupWithNavController(toolbar, controller, configuration);
 
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView drawerView = findViewById(R.id.navigation_view);
         // Connect with navigation controller for automatic navigation (menu ids must match destination ids)
+        // and UI updates
         NavigationUI.setupWithNavController(drawerView, controller);
         // Simple explicit navigation
         drawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
