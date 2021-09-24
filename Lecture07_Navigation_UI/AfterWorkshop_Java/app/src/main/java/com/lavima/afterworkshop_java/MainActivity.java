@@ -38,13 +38,14 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
 
         // Connect with navigation controller for automatic navigation
-        //NavigationUI.setupWithNavController(bottomNavigation, controller);
+        NavigationUI.setupWithNavController(bottomNavigation, controller);
         // Simple explicit navigation
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                controller.navigate(menuItem.getItemId());
-                menuItem.setChecked(true);
+                NavigationUI.onNavDestinationSelected(menuItem, controller);
+                //controller.navigate(menuItem.getItemId());
+                //menuItem.setChecked(true);
                 return true;
             }
         });
@@ -67,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
         drawerView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                controller.navigate(menuItem.getItemId());
-                menuItem.setChecked(true);
-                drawerLayout.closeDrawers();
+                NavigationUI.onNavDestinationSelected(menuItem, controller);
+                //controller.navigate(menuItem.getItemId());
+                //menuItem.setChecked(true);
+                //drawerLayout.closeDrawers();
                 return true;
             }
         });
