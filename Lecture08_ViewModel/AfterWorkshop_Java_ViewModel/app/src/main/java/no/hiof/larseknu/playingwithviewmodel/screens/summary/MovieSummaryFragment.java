@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.NavHostController;
@@ -37,7 +38,8 @@ public class MovieSummaryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        viewModel = ViewModelProviders.of(requireActivity()).get(MovieSelectionViewModel.class);
+        // Get an instance of the view model attached to the parent activity
+        viewModel = new ViewModelProvider(requireActivity()).get(MovieSelectionViewModel.class);
 
         FragmentMovieSummaryBinding binding = FragmentMovieSummaryBinding.inflate(getLayoutInflater());
 

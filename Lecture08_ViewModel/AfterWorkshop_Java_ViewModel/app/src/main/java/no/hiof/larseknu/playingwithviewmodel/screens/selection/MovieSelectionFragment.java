@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -33,7 +34,8 @@ public class MovieSelectionFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_movie_selection, container, false);
 
-        viewModel = ViewModelProviders.of(requireActivity()).get(MovieSelectionViewModel.class);
+        // Create and attach an instance of the view model to the parent activity
+        viewModel = new ViewModelProvider(requireActivity()).get(MovieSelectionViewModel.class);
 
         binding.setSelectionViewModel(viewModel);
         binding.setLifecycleOwner(this);
