@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         // This will make sure that we don't get a back/up-arrow on the top level destinations
-        AppBarConfiguration configuration = new AppBarConfiguration.Builder(R.id.homeFragment, R.id.searchFragment, R.id.collectionFragment)
+        AppBarConfiguration configuration = new AppBarConfiguration.Builder(R.id.homeFragment)
                 // This makes the app bar be able to open the navigation drawer
                 .setOpenableLayout(drawerLayout).build();
         NavigationUI.setupWithNavController(toolbar, controller, configuration);

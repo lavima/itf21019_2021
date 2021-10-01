@@ -1,5 +1,7 @@
 package com.lavima.afterworkshop_java;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,15 +28,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int RC_SIGN_IN = 123;
+    private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
+            new FirebaseAuthUIActivityResultContract(),
+            new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
+                @Override
+                public void onActivityResult(FirebaseAuthUIAuthenticationResult result) {
+                    onSignInResult(result);
+                }
+            }
+    );
 
     private FirebaseAuth auth;
     private FirebaseAuth.AuthStateListener authStateListener;
-
-    private FirebaseFirestore db;
-    private CollectionReference personCollection;
-    private ListenerRegistration firestoreListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +47,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
 
         createAuthStateListener();
-
-        personCollection = db.collection("persons");
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -75,12 +79,17 @@ public class MainActivity extends AppCompatActivity {
                             new AuthUI.IdpConfig.GoogleBuilder().build());
 
                     // Create and launch sign-in intent
-                    startActivityForResult(
-                            AuthUI.getInstance()
-                                    .createSignInIntentBuilder()
-                                    .setAvailableProviders(providers)
-                                    .build(),
-                            RC_SIGN_IN);
+                    //startActivityForResult(
+                    //        AuthUI.getInstance()
+                    //                .createSignInIntentBuilder()
+                    //                .setAvailableProviders(providers)
+                    //                .build(),
+                    //        RC_SIGN_IN);
+                    signInLauncher.launch(AuthUI.getInstance()
+                                        .createSignInIntentBuilder()
+                                        .setAvailableProviders(providers)
+                                        .build());
+
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Signed in as " + currentUser.getDisplayName(), Toast.LENGTH_LONG).show();
@@ -101,14 +110,9 @@ public class MainActivity extends AppCompatActivity {
         auth.removeAuthStateListener(authStateListener);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
 
-        if (requestCode != RC_SIGN_IN)
-            return;
-
-        if (resultCode == RESULT_OK) {
+        if (result.getResultCode() == RESULT_OK) {
             FirebaseUser currentUser = auth.getCurrentUser();
             Toast.makeText(getApplicationContext(), "Signed in as " + currentUser.getDisplayName(), Toast.LENGTH_LONG).show();
         }
