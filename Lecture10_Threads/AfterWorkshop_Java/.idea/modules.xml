@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AfterWorkshop_Java.iml" filepath="$PROJECT_DIR$/.idea/modules/AfterWorkshop_Java.iml" group="AfterWorkshop_Java" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="AfterWorkshop_Java/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AfterWorkshop_Java.iml" filepath="$PROJECT_DIR$/.idea/modules/AfterWorkshop_Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AfterWorkshop_Java.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AfterWorkshop_Java.app.iml" />
     </modules>
   </component>
 </project>
