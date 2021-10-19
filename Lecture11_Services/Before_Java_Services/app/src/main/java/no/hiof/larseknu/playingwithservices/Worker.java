@@ -9,7 +9,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import org.json.JSONException;

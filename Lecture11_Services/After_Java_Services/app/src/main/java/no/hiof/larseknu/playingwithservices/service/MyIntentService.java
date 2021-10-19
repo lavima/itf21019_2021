@@ -61,7 +61,7 @@ public class MyIntentService extends IntentService {
             String address = locationWorker.reverseGeocode(location);
             Log.d(LOGTAG, "Got address");
 
-            JSONObject json = locationWorker.getJSONObjectFromURL("http://www.omdbapi.com/?i=tt3896198&apikey=2f6990a0");
+            JSONObject json = locationWorker.getJSONObjectFromURL("https://www.omdbapi.com/?i=tt3896198&apikey=2f6990a0");
             Log.d(LOGTAG, "Got JSON");
 
             locationWorker.saveToFile(location, address, json.getString("Title"), fileName);
