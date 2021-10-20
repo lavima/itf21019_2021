@@ -36,7 +36,11 @@ import static no.hiof.larseknu.playingwithservices.MyWorker.WORKER_FILENAME;
 
 public class MainActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
     private TextView resultTextView;
+
+    // The request code for our permissions
     private static final int PERMISSION_ID = 12;
+
+    public static final String NOTIFICATION_CHANNEL_ID = "test_channel";
 
     private String[] neededPermissions = { Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE };
 
@@ -58,11 +62,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
 
     public void startStartedService(View view) {
-        startStartedService_();
-    }
-
-    //@AfterPermissionGranted(PERMISSION_ID)
-    private void startStartedService_() {
         if (EasyPermissions.hasPermissions(this, neededPermissions)) {
             startService(new Intent(this, MyStartedService.class));
         }
@@ -76,11 +75,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
 
     public void scheduleJob(View view) {
-        scheduleJob_();
-    }
-
-    //@AfterPermissionGranted(PERMISSION_ID)
-    private void scheduleJob_() {
         if (EasyPermissions.hasPermissions(this, neededPermissions)) {
             Constraints constraints = new Constraints.Builder()
                     .setRequiresCharging(true)
@@ -111,11 +105,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
 
     public void startForegroundService(View view) {
-        startForegroundService_();
-    }
-
-    //@AfterPermissionGranted(PERMISSION_ID)
-    private void startForegroundService_() {
         if (EasyPermissions.hasPermissions(this, neededPermissions)) {
             Log.i("startForegroundService", "Thread: " + Thread.currentThread().getName());
             startForegroundService(new Intent(this, MyForegroundService.class));
@@ -126,11 +115,6 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
     }
 
     public void saveAddressIntentService(View view) {
-        saveAddressIntentService_();
-    }
-
-    //@AfterPermissionGranted(PERMISSION_ID)
-    private void saveAddressIntentService_() {
         if (EasyPermissions.hasPermissions(this, neededPermissions)) {
             // This uses IntentService with ResultReceiver
             // MyIntentService.startActionRetreiveAndSaveAddress(this, "MyIntentService.txt", new MyResultReceiver(null));
@@ -199,13 +183,15 @@ public class MainActivity extends AppCompatActivity implements EasyPermissions.P
 
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
+        // the NotificationChannel class is new and not in the support library.
+        // ADD There exists a NotificationChannelCompat but it is not clear how to use it.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "test_channel";
+            CharSequence name = NOTIFICATION_CHANNEL_ID;
             String description = "Test Channel";
             int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel(name.toString(), name, importance);
+            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, name, importance);
             channel.setDescription(description);
+
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

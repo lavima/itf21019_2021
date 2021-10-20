@@ -43,12 +43,15 @@ public class MyForegroundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(LOGTAG, "onStartCommand Thread: " + Thread.currentThread().getName());
 
+        // Create an intent for the notification to bring back to MainActivity if clicked
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent =
                 PendingIntent.getActivity(this, 0, notificationIntent, 0);
 
+        // Create the notification using the notification builder
         Notification notification =
-                new Notification.Builder(getApplicationContext(), "test_channel")
+                new NotificationCompat.Builder(getApplicationContext(), MainActivity.NOTIFICATION_CHANNEL_ID)
+                        .setSmallIcon(android.R.drawable.btn_star)
                         .setContentTitle("Notification Title")
                         .setContentText("Text")
                         .setContentIntent(pendingIntent)
