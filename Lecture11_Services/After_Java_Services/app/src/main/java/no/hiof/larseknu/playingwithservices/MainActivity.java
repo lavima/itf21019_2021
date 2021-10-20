@@ -19,6 +19,7 @@ import androidx.work.WorkManager;
 import java.util.concurrent.TimeUnit;
 
 import no.hiof.larseknu.playingwithservices.service.MyIntentService;
+import no.hiof.larseknu.playingwithservices.service.MyJobIntentService;
 import no.hiof.larseknu.playingwithservices.service.MyStartedService;
 
 import static no.hiof.larseknu.playingwithservices.MyWorker.WORKER_FILENAME;
@@ -67,7 +68,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void saveAddressIntentService(View view) {
-        MyIntentService.startActionRetreiveAndSaveAddress(this, "MyIntentService.txt", new MyResultReceiver(null));
+        // This uses IntentService with ResultReceiver
+        // MyIntentService.startActionRetreiveAndSaveAddress(this, "MyIntentService.txt", new MyResultReceiver(null));
+        // This uses JobIntentService
+        MyJobIntentService.enqueueWork(this, "MyJobIntentService.txt", new MyResultReceiver(null));
     }
 
     private class MyResultReceiver extends ResultReceiver {

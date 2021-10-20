@@ -68,7 +68,7 @@ public class MyStartedService extends Service {
 
                 String address = locationWorker.reverseGeocode(location);
 
-                JSONObject jsonObject = locationWorker.getJSONObjectFromURL("http://www.omdbapi.com/?i=tt3896198&apikey=2f6990a0");
+                JSONObject jsonObject = locationWorker.getJSONObjectFromURL("https://www.omdbapi.com/?i=tt3896198&apikey=2f6990a0");
 
                 locationWorker.saveToFile(location, address, jsonObject.getString("Title"), "MyStartedService.txt");
             } catch (JSONException e) {
